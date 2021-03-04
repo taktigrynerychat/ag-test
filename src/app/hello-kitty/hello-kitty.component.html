@@ -1,0 +1,19 @@
+<section class="cell-row">
+  <div class="cell-row__item">
+    <span *ngIf="key === 'seems' else def">Похожие: </span>
+    <ng-template #def>
+      <span style="white-space: normal">{{params.data[key]}}</span>
+    </ng-template>
+    <button
+      *ngIf="!!params.data.children && key === 'seems'"
+      (click)="toggle()"
+    >toggle
+    </button>
+  </div>
+  <div
+    class="cell-row__item"
+    *ngFor="let child of params.data.children"
+  >
+    <span>{{child[key]}}</span>
+  </div>
+</section>

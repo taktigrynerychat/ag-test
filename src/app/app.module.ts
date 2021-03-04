@@ -1,16 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AgGridModule } from 'ag-grid-angular';
 
 import { AppComponent } from './app.component';
+import { HelloKittyComponent } from './hello-kitty/hello-kitty.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HelloKittyComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AgGridModule.withComponents([HelloKittyComponent]),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+}
