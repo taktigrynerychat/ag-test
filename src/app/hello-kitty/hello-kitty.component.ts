@@ -10,7 +10,6 @@ import { ICellRendererParams } from 'ag-grid-community';
 export class HelloKittyComponent implements AgRendererComponent {
   params: ICellRendererParams;
   key: string;
-  heightChanged = false;
   initialHeight;
 
   constructor() {
@@ -27,10 +26,10 @@ export class HelloKittyComponent implements AgRendererComponent {
   }
 
   toggle(): void {
-    this.heightChanged = !this.heightChanged;
+    this.params.node.setExpanded(!this.params.node.expanded);
     this.params.api.resetRowHeights();
     this.params.node.setRowHeight(
-      this.heightChanged
+      this.params.node.expanded
         ? (this.params.data.children.length + 1) * this.initialHeight
         : this.initialHeight,
     );

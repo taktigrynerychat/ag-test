@@ -10,10 +10,12 @@
     >toggle
     </button>
   </div>
-  <div
-    class="cell-row__item"
-    *ngFor="let child of params.data.children"
-  >
-    <span>{{child[key]}}</span>
-  </div>
+  <ng-container *ngIf="this.params.node.expanded">
+    <div
+      class="cell-row__item"
+      *ngFor="let child of params.data.children"
+    >
+      <span>{{child[key]}}</span>
+    </div>
+  </ng-container>
 </section>
