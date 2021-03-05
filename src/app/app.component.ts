@@ -44,8 +44,8 @@ export class AppComponent {
   ];
 
   rowData = [
-    {toggleCol: '', make: 'Toyota', model: 'Celica', price: 35000},
-    {toggleCol: '', make: 'Ford', model: 'Mondeo', price: 32000},
+    { make: 'Toyota', model: 'Celica', price: 35000},
+    { make: 'Ford', model: 'Mondeo', price: 32000},
     {
       make: 'Hello Kitty',
       model: 'Kitty',
@@ -56,15 +56,15 @@ export class AppComponent {
         {make: 'Чеееек', model: '(⓿_⓿)', price: 3},
       ],
     },
-    {toggleCol: '', make: 'Porsche', model: 'Boxter', price: 72000},
-    {toggleCol: '', make: 'Porsche', model: 'Boxter', price: 72000},
-    {toggleCol: '', make: 'Porsche', model: 'Boxter', price: 72000},
-    {toggleCol: '', make: 'Porsche', model: 'Boxter', price: 72000},
-    {toggleCol: '', make: 'Porsche', model: 'Boxter', price: 72000},
-    {toggleCol: '', make: 'Porsche', model: 'Boxter', price: 72000},
-    {toggleCol: '', make: 'Porsche', model: 'Boxter', price: 72000},
-    {toggleCol: '', make: 'Porsche', model: 'Boxter', price: 72000},
-    {toggleCol: '', make: 'Porsche', model: 'Boxter', price: 72000},
+    { make: 'Porsche', model: 'Boxter', price: 72000},
+    { make: 'Porsche', model: 'Boxter', price: 72000},
+    { make: 'Porsche', model: 'Boxter', price: 72000},
+    { make: 'Porsche', model: 'Boxter', price: 72000},
+    { make: 'Porsche', model: 'Boxter', price: 72000},
+    { make: 'Porsche', model: 'Boxter', price: 72000},
+    { make: 'Porsche', model: 'Boxter', price: 72000},
+    { make: 'Porsche', model: 'Boxter', price: 72000},
+    { make: 'Porsche', model: 'Boxter', price: 72000},
   ];
 
 }
