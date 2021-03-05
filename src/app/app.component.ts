@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ColDef, ColGroupDef, GridApi, GridOptions, RowNode } from 'ag-grid-community';
+import { ColDef, ColGroupDef, GridOptions } from 'ag-grid-community';
 import { HelloKittyComponent } from './hello-kitty/hello-kitty.component';
 
 @Component({
@@ -8,57 +8,63 @@ import { HelloKittyComponent } from './hello-kitty/hello-kitty.component';
   styleUrls: ['./app.component.less'],
 })
 export class AppComponent {
+
   gridOptions: GridOptions = {
+    context: {
+      toggleColumn: 'toggleCol',
+      toggleColumnContent: 'Похожие:'
+    },
     frameworkComponents: {
-      hi: HelloKittyComponent,
+      helloKittyRenderer: HelloKittyComponent,
     },
     rowHeight: 40,
   };
+
   columnDefs: (ColDef | ColGroupDef)[] = [
     {
-      field: 'seems',
-      colId: 'seems',
-      cellRenderer: 'hi',
+      field: 'toggleCol',
+      colId: 'toggleCol',
+      cellRenderer: 'helloKittyRenderer',
     },
     {
       field: 'make',
       colId: 'make',
-      cellRenderer: 'hi',
+      cellRenderer: 'helloKittyRenderer',
     },
     {
       field: 'model',
       colId: 'model',
-      cellRenderer: 'hi',
+      cellRenderer: 'helloKittyRenderer',
     },
     {
       field: 'price',
       colId: 'price',
-      cellRenderer: 'hi',
+      cellRenderer: 'helloKittyRenderer',
     },
   ];
 
   rowData = [
-    {seems: '', make: 'Toyota', model: 'Celica', price: 35000},
-    {seems: '', make: 'Ford', model: 'Mondeo', price: 32000},
+    {toggleCol: '', make: 'Toyota', model: 'Celica', price: 35000},
+    {toggleCol: '', make: 'Ford', model: 'Mondeo', price: 32000},
     {
-      make: 'Hello Kitty', model: 'Boxter', price: 72000, children: [
-        {make: 'Кастом', model: 'Celica', price: 35000},
-        {make: 'Строки', model: 'Mondeo llasdalsd la ldalsdl lasld lalsdlasld lalsd lalsdl alsdllalsd lalsdl asldl alsdl lasdl alsdl ald asdl alsd lalsd ', price: 32000},
-        {make: 'Чеееек', model: 'Boxter', price: 72000},
+      make: 'Hello Kitty',
+      model: 'Kitty',
+      price: 0,
+      children: [
+        {make: 'Кастом', model: '😁🤬🥵', price: 1},
+        {make: 'Строки', model: '🤑🙄😴', price: 2},
+        {make: 'Чеееек', model: '(⓿_⓿)', price: 3},
       ],
     },
-    {seems: '', make: 'Porsche', model: 'Boxter', price: 72000},
-    {seems: '', make: 'Porsche', model: 'Boxter', price: 72000},
-    {seems: '', make: 'Porsche', model: 'Boxter', price: 72000},
-    {seems: '', make: 'Porsche', model: 'Boxter', price: 72000},
-    {seems: '', make: 'Porsche', model: 'Boxter', price: 72000},
-    {seems: '', make: 'Porsche', model: 'Boxter', price: 72000},
-    {seems: '', make: 'Porsche', model: 'Boxter', price: 72000},
-    {seems: '', make: 'Porsche', model: 'Boxter', price: 72000},
-    {seems: '', make: 'Porsche', model: 'Boxter', price: 72000},
+    {toggleCol: '', make: 'Porsche', model: 'Boxter', price: 72000},
+    {toggleCol: '', make: 'Porsche', model: 'Boxter', price: 72000},
+    {toggleCol: '', make: 'Porsche', model: 'Boxter', price: 72000},
+    {toggleCol: '', make: 'Porsche', model: 'Boxter', price: 72000},
+    {toggleCol: '', make: 'Porsche', model: 'Boxter', price: 72000},
+    {toggleCol: '', make: 'Porsche', model: 'Boxter', price: 72000},
+    {toggleCol: '', make: 'Porsche', model: 'Boxter', price: 72000},
+    {toggleCol: '', make: 'Porsche', model: 'Boxter', price: 72000},
+    {toggleCol: '', make: 'Porsche', model: 'Boxter', price: 72000},
   ];
 
-  toggled(e): void {
-    console.log(e);
-  }
 }

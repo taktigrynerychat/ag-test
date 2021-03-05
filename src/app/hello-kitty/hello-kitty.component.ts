@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AgRendererComponent } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
 
@@ -8,9 +8,9 @@ import { ICellRendererParams } from 'ag-grid-community';
   styleUrls: ['./hello-kitty.component.less'],
 })
 export class HelloKittyComponent implements AgRendererComponent {
-  params: ICellRendererParams;
-  key: string;
-  initialHeight;
+  public params: ICellRendererParams;
+  public key: string;
+  public initialHeight: number;
 
   constructor() {
   }
@@ -25,7 +25,7 @@ export class HelloKittyComponent implements AgRendererComponent {
     return false;
   }
 
-  toggle(): void {
+  public toggle(): void {
     this.params.node.setExpanded(!this.params.node.expanded);
     this.params.api.resetRowHeights();
     this.params.node.setRowHeight(

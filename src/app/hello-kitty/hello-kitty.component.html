@@ -1,21 +1,62 @@
 <section class="cell-row">
-  <div class="cell-row__item">
-    <span *ngIf="key === 'seems' else def">Похожие: </span>
-    <ng-template #def>
-      <span style="white-space: normal">{{params.data[key]}}</span>
-    </ng-template>
-    <button
-      *ngIf="!!params.data.children && key === 'seems'"
-      (click)="toggle()"
-    >toggle
-    </button>
+  <div
+    class="cell-row__item cell-row__item--parent"
+    [style.height]="initialHeight+ 'px'"
+  >
+    <ng-container
+      *ngTemplateOutlet="key === this.params.context.toggleColumn
+    ? toggleCell
+    : cellSwitcher; context: {$implicit: this.params.data[key]}"
+    ></ng-container>
   </div>
+
   <ng-container *ngIf="this.params.node.expanded">
     <div
-      class="cell-row__item"
+      class="cell-row__item cell-row__item--child"
+      [style.height]="initialHeight+ 'px'"
       *ngFor="let child of params.data.children"
     >
-      <span>{{child[key]}}</span>
+      <ng-container *ngTemplateOutlet="cellSwitcher; context: {$implicit: child[key]}"></ng-container>
     </div>
   </ng-container>
 </section>
+
+<ng-template
+  #cellSwitcher
+  let-data
+>
+  <ng-container [ngSwitch]="key">
+    <ng-container *ngSwitchCase="'price'">
+      <ng-container *ngTemplateOutlet="priceCell; context: {$implicit: data}"></ng-container>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+      <ng-container *ngTemplateOutlet="defaultCell; context: {$implicit: data}"></ng-container>
+    </ng-container>
+  </ng-container>
+</ng-template>
+
+<ng-template
+  #toggleCell
+  let-data
+>
+  <ng-container *ngTemplateOutlet="defaultCell; context: {$implicit: data}"></ng-container>
+  <button
+    *ngIf="params.data.children && key === this.params.context.toggleColumn"
+    (click)="toggle()"
+  >toggle
+  </button>
+</ng-template>
+
+<ng-template
+  #defaultCell
+  let-data
+>
+  <span>{{ data }}</span>
+</ng-template>
+
+<ng-template
+  #priceCell
+  let-data
+>
+  <span>{{ data | currency: '$' }}</span>
+</ng-template>
