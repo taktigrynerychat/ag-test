@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { AgRendererComponent } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
 
@@ -6,6 +6,7 @@ import { ICellRendererParams } from 'ag-grid-community';
   selector: 'app-hello-kitty',
   templateUrl: './hello-kitty.component.html',
   styleUrls: ['./hello-kitty.component.less'],
+  encapsulation: ViewEncapsulation.None
 })
 export class HelloKittyComponent implements AgRendererComponent {
   public params: ICellRendererParams;
