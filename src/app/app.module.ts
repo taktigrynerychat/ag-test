@@ -7,6 +7,7 @@ import { DynamicCellRendererDirective } from './expandable-cell-renderer/dynamic
 import { HelloKittyComponent } from './hello-kitty/hello-kitty.component';
 import { ExpandableCellRendererComponent } from './expandable-cell-renderer/expandable-cell-renderer.component';
 import { DefaultCellRendererComponent } from './default-cell-renderer/default-cell-renderer.component';
+import { ToggleCellRendererComponent } from './toggle-cell-renderer/toggle-cell-renderer.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { DefaultCellRendererComponent } from './default-cell-renderer/default-ce
     ExpandableCellRendererComponent,
     DefaultCellRendererComponent,
     DynamicCellRendererDirective,
+    ToggleCellRendererComponent,
   ],
   imports: [
     BrowserModule,
