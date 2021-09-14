@@ -4,7 +4,7 @@
     [style.height]="initialHeight+ 'px'"
   >
     <ng-container
-      *ngTemplateOutlet= "cellSwitcher; context: {$implicit: this.params.data}"
+      *ngTemplateOutlet="cellSwitcher; context: {$implicit: this.params.data}"
     ></ng-container>
   </div>
 
@@ -21,25 +21,21 @@
 
 <ng-template
   #cellSwitcher
-  let-data>
-  <ng-container *ngIf="params.colDef.cellRendererParams?.expandableCellRenderer">
-    <ng-container appDynamicCellRenderer [params]="params" [data]="data[key]" [fullData] ="data" (toggleClick)="toggle()"></ng-container>
-  </ng-container>
-  <ng-container *ngIf="!params.colDef.cellRendererParams?.expandableCellRenderer">
-    <ng-container *ngTemplateOutlet="defaultCell; context: {$implicit: data[key]}"></ng-container>
-  </ng-container>
-</ng-template>
-
-<ng-template
-  #toggleCell
   let-data
 >
-  <ng-container *ngTemplateOutlet="defaultCell; context: {$implicit: data}"></ng-container>
-  <button
-    *ngIf="params.data.children && key === this.params.context.toggleColumn"
-    (click)="toggle()"
-  >toggle
-  </button>
+  <ng-container *ngIf="params.colDef.cellRendererParams?.expandableCellRenderer; else cellWithoutRenderer">
+    <ng-container
+      appDynamicCellRenderer
+      [params]="params"
+      [data]="data[key]"
+      [fullData]="data"
+      (toggleClick)="toggle()"
+    >
+    </ng-container>
+  </ng-container>
+  <ng-template #cellWithoutRenderer>
+    <ng-container *ngTemplateOutlet="defaultCell; context: {$implicit: data[key]}"></ng-container>
+  </ng-template>
 </ng-template>
 
 <ng-template

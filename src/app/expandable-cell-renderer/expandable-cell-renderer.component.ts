@@ -26,7 +26,6 @@ export class ExpandableCellRendererComponent {
 
   public toggle(): void {
     this.params.node.setExpanded(!this.params.node.expanded);
-    // this.params.api.resetRowHeights();
     this.params.node.setRowHeight(
       this.params.node.expanded
         ? (this.params.data.children.length + 1) * this.initialHeight
